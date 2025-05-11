@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <title data-ar="الخدمات" data-en="Services">الخدمات</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Cairo&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+  <header>
+    <div class="container">
+      <img src="logo.png" alt="شعار الجهة" class="logo">
+      <h1 data-ar="الجهة الحكومية" data-en="Government Authority">الجهة الحكومية</h1>
+      <nav>
+        <ul>
+          <li><a href="index.html" data-ar="الرئيسية" data-en="Home">الرئيسية</a></li>
+          <li><a href="about.html" data-ar="عن الجهة" data-en="About">عن الجهة</a></li>
+          <li><a href="services.html" data-ar="الخدمات" data-en="Services">الخدمات</a></li>
+          <li><a href="news.html" data-ar="الأخبار" data-en="News">الأخبار</a></li>
+          <li><a href="contact.html" data-ar="تواصل معنا" data-en="Contact Us">تواصل معنا</a></li>
+          <li><a href="#" id="langToggle">English</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <section>
+    <h2 data-ar="الخدمات" data-en="Services">الخدمات</h2>
+    <ul>
+      <li data-ar="خدمة إصدار الوثائق الرسمية" data-en="Official Document Issuance Service">خدمة إصدار الوثائق الرسمية</li>
+      <li data-ar="خدمة الاستعلام عن المعاملات" data-en="Transaction Inquiry Service">خدمة الاستعلام عن المعاملات</li>
+      <li data-ar="خدمة حجز المواعيد الإلكترونية" data-en="Online Appointment Booking">خدمة حجز المواعيد الإلكترونية</li>
+      <li data-ar="خدمة تقديم الشكاوى والملاحظات" data-en="Submit Complaints and Feedback">خدمة تقديم الشكاوى والملاحظات</li>
+    </ul>
+  </section>
+
+  <footer>
+    <p data-ar="جميع الحقوق محفوظة - الجهة الحكومية" data-en="All rights reserved - Government Authority">
+      جميع الحقوق محفوظة - الجهة الحكومية
+    </p>
+<script>
+  function setLanguage(lang) {
+    document.documentElement.lang = lang;
+    document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+
+    document.querySelectorAll('[data-ar]').forEach(el => {
+      el.textContent = el.getAttribute(`data-${lang}`);
+    });
+
+    document.getElementById('langToggle').textContent = lang === 'ar' ? 'English' : 'العربية';
+
+    localStorage.setItem('lang', lang); 
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const savedLang = localStorage.getItem('lang') || 'ar';
+    setLanguage(savedLang);
+
+    document.getElementById('langToggle').addEventListener('click', function (e) {
+      e.preventDefault();
+      const currentLang = document.documentElement.lang;
+      const newLang = currentLang === 'ar' ? 'en' : 'ar';
+      setLanguage(newLang);
+    });
+  });
+</script>
+
+
+</body>
+</html>

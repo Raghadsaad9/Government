@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <title data-ar="تواصل معنا" data-en="Contact Us">تواصل معنا</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Cairo&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+  <header>
+    <div class="container">
+      <img src="logo.png" alt="شعار الجهة" class="logo">
+      <h1 data-ar="الجهة الحكومية" data-en="Government Authority">الجهة الحكومية</h1>
+      <nav>
+        <ul>
+          <li><a href="index.html" data-ar="الرئيسية" data-en="Home">الرئيسية</a></li>
+          <li><a href="about.html" data-ar="عن الجهة" data-en="About">عن الجهة</a></li>
+          <li><a href="services.html" data-ar="الخدمات" data-en="Services">الخدمات</a></li>
+          <li><a href="news.html" data-ar="الأخبار" data-en="News">الأخبار</a></li>
+          <li><a href="contact.html" data-ar="تواصل معنا" data-en="Contact Us">تواصل معنا</a></li>
+          <li><a href="#" id="langToggle">English</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <section>
+    <h2 data-ar="تواصل معنا" data-en="Contact Us">تواصل معنا</h2>
+    <form action="#" method="post">
+      <label for="name" data-ar="الاسم الكامل" data-en="Full Name">الاسم الكامل</label>
+      <input type="text" id="name" name="name" required>
+
+      <label for="email" data-ar="البريد الإلكتروني" data-en="Email">البريد الإلكتروني</label>
+      <input type="email" id="email" name="email" required>
+
+      <label for="message" data-ar="الرسالة" data-en="Message">الرسالة</label>
+      <textarea id="message" name="message" rows="5" required></textarea>
+
+      <button type="submit" data-ar="إرسال" data-en="Submit">إرسال</button>
+    </form>
+  </section>
+
+  <footer>
+    <p data-ar="جميع الحقوق محفوظة - الجهة الحكومية" data-en="All rights reserved - Government Authority">
+      جميع الحقوق محفوظة - الجهة الحكومية
+    </p>
+    <script>document.write(new Date().getFullYear());</script>
+  </footer>
+<script>
+  function setLanguage(lang) {
+    document.documentElement.lang = lang;
+    document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+
+    document.querySelectorAll('[data-ar]').forEach(el => {
+      el.textContent = el.getAttribute(`data-${lang}`);
+    });
+
+    document.getElementById('langToggle').textContent = lang === 'ar' ? 'English' : 'العربية';
+
+    localStorage.setItem('lang', lang);
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const savedLang = localStorage.getItem('lang') || 'ar';
+    setLanguage(savedLang);
+
+    document.getElementById('langToggle').addEventListener('click', function (e) {
+      e.preventDefault();
+      const currentLang = document.documentElement.lang;
+      const newLang = currentLang === 'ar' ? 'en' : 'ar';
+      setLanguage(newLang);
+    });
+  });
+</script>
+
+
+</body>
+</html>

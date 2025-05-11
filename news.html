@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <title data-ar="الأخبار" data-en="News">الأخبار</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Cairo&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+  <header>
+    <div class="container">
+      <img src="logo.png" alt="شعار الجهة" class="logo">
+      <h1 data-ar="الجهة الحكومية" data-en="Government Authority">الجهة الحكومية</h1>
+      <nav>
+        <ul>
+          <li><a href="index.html" data-ar="الرئيسية" data-en="Home">الرئيسية</a></li>
+          <li><a href="about.html" data-ar="عن الجهة" data-en="About">عن الجهة</a></li>
+          <li><a href="services.html" data-ar="الخدمات" data-en="Services">الخدمات</a></li>
+          <li><a href="news.html" data-ar="الأخبار" data-en="News">الأخبار</a></li>
+          <li><a href="contact.html" data-ar="تواصل معنا" data-en="Contact Us">تواصل معنا</a></li>
+          <li><a href="#" id="langToggle">English</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <section>
+    <h2 data-ar="آخر الأخبار" data-en="Latest News">آخر الأخبار</h2>
+
+    <article>
+      <img src="pic.jpeg" alt="إطلاق خدمة إلكترونية جديدة" style="width: 100%; max-width: 600px; border-radius: 8px; margin-bottom: 10px;">
+      <h3 data-ar="إطلاق خدمة إلكترونية جديدة" data-en="Launching a New E-Service">إطلاق خدمة إلكترونية جديدة</h3>
+      <p data-ar="تم تدشين خدمة إلكترونية جديدة تسهل على المواطنين الوصول للمعلومات الحكومية بسرعة وفعالية." 
+         data-en="A new e-service has been launched to help citizens access government information efficiently.">
+         تم تدشين خدمة إلكترونية جديدة تسهل على المواطنين الوصول للمعلومات الحكومية بسرعة وفعالية.
+      </p>
+      <a href="news-details1.html" data-ar="اقرأ المزيد" data-en="Read more">اقرأ المزيد</a>
+    </article>
+
+    <article>
+      <img src="Pic1.jpg" alt="ورشة عمل للتطوير المؤسسي" style="width: 100%; max-width: 600px; border-radius: 8px; margin-bottom: 10px;">
+      <h3 data-ar="ورشة عمل للتطوير المؤسسي" data-en="Institutional Development Workshop">ورشة عمل للتطوير المؤسسي</h3>
+      <p data-ar="أقامت الجهة ورشة عمل داخلية تهدف إلى تحسين جودة الخدمات وتطوير الأداء العام."
+         data-en="The authority held a workshop to enhance service quality and improve overall performance.">
+         أقامت الجهة ورشة عمل داخلية تهدف إلى تحسين جودة الخدمات وتطوير الأداء العام.
+      </p>
+      <a href="news-details2.html" data-ar="اقرأ المزيد" data-en="Read more">اقرأ المزيد</a>
+    </article>
+  </section>
+
+  <footer>
+    <p data-ar="جميع الحقوق محفوظة - الجهة الحكومية" data-en="All rights reserved - Government Authority">
+      جميع الحقوق محفوظة - الجهة الحكومية
+    </p>
+    <script>document.write(new Date().getFullYear());</script>
+  </footer>
+
+
+<script>
+  function setLanguage(lang) {
+    document.documentElement.lang = lang;
+    document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+
+    document.querySelectorAll('[data-ar]').forEach(el => {
+      el.textContent = el.getAttribute(`data-${lang}`);
+    });
+
+    document.getElementById('langToggle').textContent = lang === 'ar' ? 'English' : 'العربية';
+
+    localStorage.setItem('lang', lang); 
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const savedLang = localStorage.getItem('lang') || 'ar'; 
+    setLanguage(savedLang);
+
+    document.getElementById('langToggle').addEventListener('click', function(e) {
+      e.preventDefault();
+      const currentLang = document.documentElement.lang;
+      const newLang = currentLang === 'ar' ? 'en' : 'ar';
+      setLanguage(newLang);
+    });
+  });
+</script>
+
+
+</body>
+</html>
